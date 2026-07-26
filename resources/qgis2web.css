@@ -584,47 +584,44 @@ td video {
   margin-bottom: 10px !important;
   display: block;
 }
+
 /* =========================================
-   A. ENCABEZADO SUPERIOR OSCURO (Adaptable a Móvil y PC)
+   A. ENCABEZADO SUPERIOR OSCURO
    ========================================= */
 #header-mapa {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  min-height: 65px; /* Altura flexible para que nunca se pegue */
+  height: 60px; 
   background-color: #111111; 
   color: white;
   z-index: 9999;
-  padding: 12px 20px !important; /* Margen interno seguro en todos los bordes */
+  padding: 10px 24px;
   box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   
+  /* Flexbox para mandar el botón a la derecha */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap; /* Se adapta automáticamente si se abre en teléfono */
-  gap: 10px;
 }
 
 #header-mapa .header-textos h1 {
   margin: 0;
-  font-size: 16px; /* Ligeramente más compacto para que luzca bien en móviles */
+  font-size: 18px;
   font-weight: 600;
   letter-spacing: 0.5px;
 }
 
 #header-mapa .header-textos h1 .highlight {
-  background: linear-gradient(135deg, #007aff, #5856d6, #af52de);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 700;
+  color: #007aff; 
 }
 
 #header-mapa .header-textos p {
   margin: 2px 0 0 0;
-  font-size: 11.5px;
+  font-size: 12px;
   color: #8e8e93; 
 }
 
@@ -634,20 +631,20 @@ td video {
   color: white;
   border: none;
   border-radius: 20px;
-  padding: 8px 16px;
-  font-size: 13.5px;
+  padding: 8px 18px;
+  font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3); /* Sombra azul brillante */
   transition: background-color 0.2s, transform 0.2s;
-  flex-shrink: 0; /* Evita que el botón se deforme */
 }
 
 #btn-analisis:hover {
   background-color: #005bb5;
-  transform: scale(1.05);
+  transform: scale(1.05); /* Pequeño salto al pasar el cursor */
 }
 
+/* Clase maestra que ocultará el tablero mediante JavaScript */
 #tablero-indicadores.oculto {
   display: none !important;
   opacity: 0;
