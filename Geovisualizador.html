@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="./resources/ol.css">
+        <link rel="stylesheet" href="resources/fontawesome-all.min.css">
+        <link href="resources/photon-geocoder-autocomplete.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="./resources/ol-layerswitcher.css">
+        <link rel="stylesheet" href="./resources/qgis2web.css">
+        <style>
+        
+        
+     
+        
+        </style>
+
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+       <!-- 1. ENCABEZADO OSCURO -->
+        <div id="header-mapa">
+            <div class="header-textos">
+                <h1>Geovisualizador Urbano &bull; <span class="gradient-text">Santa Rosa</span></h1>
+                <p>EPSG:32717 - WGS 84 / UTM zone 17S</p>
+            </div>
+            <button id="btn-analisis">Análisis 📊</button>
+        </div>
+
+       <!-- 2. TABLERO DE INDICADORES FLOTANTE -->
+        <div id="tablero-indicadores">
+            <h4 class="tablero-subtitle">TABLERO DE INDICADORES</h4>
+            <h2 class="tablero-title">Sector Santa Rosa &bull; 56.91 ha</h2>
+            <p class="tablero-meta">569,062 m² &bull; Población estimada: 6,780 hab</p>
+
+            <hr class="tablero-divider">
+
+            <!-- Sección 1: Accesibilidad -->
+            <div class="seccion-indicador">
+                <div class="seccion-header">
+                    <span class="badge badge-blue">1</span>
+                    <strong>Accesibilidad a equipamientos</strong>
+                </div>
+                
+                <div class="bar-container">
+                    <div class="bar-labels">
+                        <span>🏫 Unidades educativas (radio 300m)</span>
+                        <strong>61.8%</strong>
+                    </div>
+                    <div class="bar-bg"><div class="bar-fill bg-blue" style="width: 61.8%;"></div></div>
+                    <p class="bar-detail">Población cubierta: 4,187 hab (63/107 manzanas)</p>
+                </div>
+
+                <div class="bar-container">
+                    <div class="bar-labels">
+                        <span>🏥 Centros de salud (radio 600m)</span>
+                        <strong>100%</strong>
+                    </div>
+                    <div class="bar-bg"><div class="bar-fill bg-green" style="width: 100%;"></div></div>
+                    <p class="bar-detail">Población cubierta: 6,780 hab (107/107 manzanas)</p>
+                </div>
+            </div>
+
+            <!-- Sección 2: Áreas Verdes -->
+            <div class="seccion-indicador">
+                <div class="seccion-header">
+                    <span class="badge badge-green">2</span>
+                    <strong>Población servida por áreas verdes</strong>
+                </div>
+                
+                <h3 class="dato-critico">2.07 <span>m² / habitante</span> <span class="tag-alert">Bajo el mínimo OMS</span></h3>
+                
+                <div class="bar-container">
+                    <div class="bar-bg"><div class="bar-fill bg-red" style="width: 23%;"></div></div>
+                </div>
+                
+                <table class="data-table">
+                    <tr><td>Área verde disponible</td><td>14,008 m²</td></tr>
+                    <tr><td>Déficit frente a OMS (9 m²)</td><td class="text-red">-47,011 m² (-4.7 ha)</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- 3. CONTENEDOR DEL MAPA (Aquí es donde ocurre la magia) -->
+        <div id="map">
+            <div id="popup" class="ol-popup">
+                <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+                <div id="popup-content"></div>
+            </div>
+        </div>
+
+        <!-- 4. SCRIPTS DE QGIS -->
+        <script src="resources/qgis2web_expressions.js"></script>
+        <script src="./resources/functions.js"></script>
+        <script src="./resources/ol.js"></script>
+        <script src="./resources/ol-layerswitcher.js"></script>
+        <script src="resources/photon-geocoder-autocomplete.min.js"></script>
+        <script src="layers/contorno_1.js"></script>
+        <script src="layers/areas_verdes_2.js"></script>
+        <script src="layers/hidrografia_3.js"></script>
+        <script src="layers/Buffer_Salud_600m_4.js"></script>
+        <script src="layers/buffer_educacion_300m_5.js"></script>
+        <script src="layers/zonas_de_riesgo_6.js"></script>
+        <script src="layers/parcelas_7.js"></script>
+        <script src="layers/lotes_urbanos_8.js"></script>
+        <script src="layers/red_vial_9.js"></script>
+        <script src="layers/equipamientos_10.js"></script>
+        <script src="styles/contorno_1_style.js"></script>
+        <script src="styles/areas_verdes_2_style.js"></script>
+        <script src="styles/hidrografia_3_style.js"></script>
+        <script src="styles/Buffer_Salud_600m_4_style.js"></script>
+        <script src="styles/buffer_educacion_300m_5_style.js"></script>
+        <script src="styles/zonas_de_riesgo_6_style.js"></script>
+        <script src="styles/parcelas_7_style.js"></script>
+        <script src="styles/lotes_urbanos_8_style.js"></script>
+        <script src="styles/red_vial_9_style.js"></script>
+        <script src="styles/equipamientos_10_style.js"></script>
+        <script src="./layers/layers.js" type="text/javascript"></script> 
+        <script src="./resources/Autolinker.min.js"></script>
+        <script src="./resources/qgis2web.js"></script>     
+
+        <!-- 5. SCRIPT PARA EL BOTÓN DE ANÁLISIS -->
+        <script>
+            document.getElementById('btn-analisis').addEventListener('click', function() {
+                var tablero = document.getElementById('tablero-indicadores');
+                tablero.classList.toggle('oculto');
+            });
+        </script>   
+    </body>
+</html>
